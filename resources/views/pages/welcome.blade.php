@@ -1,6 +1,9 @@
 @extends('main')
 
-
+@section('title','|Home Page')
+@section('stylesheets')
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    @endsection
 @section('content')
     <div class="row">
         <div class="col-md-8" >
@@ -39,3 +42,7 @@
         </div>
     </div> <!-- end of container -->
 @endsection
+
+@section('scripts')
+    <link src="js/script.js">
+    @endsection
