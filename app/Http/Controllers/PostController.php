@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Illuminate\Support\Facades\Session;
+
 use Illuminate\Http\Request;
 
 
@@ -17,6 +17,8 @@ class PostController extends Controller
     public function index()
     {
         //
+        $posts = Post::all();
+        return view('posts.index',compact('posts'));
     }
 
     /**
@@ -47,7 +49,7 @@ class PostController extends Controller
         $post->body = $request->body;
         $post->save();
 
-        Session::flash('success', 'The blog post was successfully saved !');
+        $request->session()->flash('success', 'The blog post was successfully saved !');
 
         return redirect()->route('posts.show', $post->id);
     }
@@ -60,7 +62,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('posts.show',compact('post'));
     }
 
     /**
