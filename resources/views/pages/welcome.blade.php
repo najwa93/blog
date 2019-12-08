@@ -4,6 +4,7 @@
 @section('stylesheets')
     <link rel="stylesheet" type="text/css" href="styles.css">
     @endsection
+
 @section('content')
     <div class="row">
         <div class="col-md-8" >
