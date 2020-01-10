@@ -12,6 +12,7 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
+    Route::get('blog/{slug}/comment',['as' => 'blog.single']);
     Route::get('/','PagesController@getIndex');
 //about
     Route::get('/contact', 'PagesController@getContact');

@@ -42,10 +42,13 @@ class PostController extends Controller
         //validate the data
         //store in the database
         //redirect to another page
-        $this->validate($request,['title' => 'required|max:255' , 'body' => 'required']);
+        $this->validate($request,['title' => 'required|max:255' ,
+            'body' => 'required',
+            'slug' =>'required|min:5|alpha_dash|max:255|unique:posts,slug' ]);
 
         $post = new Post();
         $post->title = $request->title;
+        $post->slug = $request->slug;
         $post->body = $request->body;
         $post->save();
 
@@ -87,11 +90,14 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,['title' => 'required|max:255' , 'body' => 'required']);
+        $this->validate($request,['title' => 'required|max:255' ,
+            'body' => 'required',
+            'slug' =>'required|min:5|alpha_dash|max:255|unique:posts,slug']);
         $post = Post::findOrfail($id);
 
         $post->title = $request->input('title');
         $post->body = $request->input('body');
+        $post->slug = $request->input('slug');
         $post->save();
         //set flash data with success message
         $request->session()->flash('success','This Post Was Successfully Updated');

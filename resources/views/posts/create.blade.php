@@ -18,6 +18,9 @@
                 {{Form::label('title','Title:')}} <!-- id of the label which is the column name in the db -->
                 {{Form::text('title',null,array('class' => 'form-control','required' => ''))}}
 
+                {{ Form::label('slug','Slug') }}
+                {{Form::text('slug',null,array('class' => 'form-control','required' => '','minlength'=>'5','maxlength'=>'255'))}}
+
                 {{Form::label('body','Post Body :')}}
                 {{Form::textarea('body',null ,array('class' => 'form-control','required' => '', 'maxlength' => '255'))}}
 
